@@ -5,18 +5,18 @@ GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
 # assuming the system is Debian
-printf "${GREEN}Installing vim, tmux, and git${NC}"
+printf "${GREEN}Installing vim, tmux, and git${NC}\n"
 sudo apt-get update
 sudo apt-get install vim -y
 sudo apt-get install tmux -y
 sudo apt-get install git -y
 
-printf "${GREEN}Pulling config files and copying them to home directory${NC}"
+printf "${GREEN}Pulling config files and copying them to home directory${NC}\n"
 # Generate a private/public key pair and print the public key
 ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N ""
-printf "${YELLOW}Here is the generated public key: add it to your github account${NC}"
+printf "${YELLOW}Here is the generated public key: add it to your github account${NC}\n"
 cat ~/.ssh/id_ed25519.pub
-echo "${YELLOW}... then, press [Enter] to continue...${NC}"
+printf "${YELLOW}... then, press [Enter] to continue...${NC}\n"
 read
 
 # Checkout bootstrap repo in a temp folder
@@ -32,7 +32,7 @@ rm -rf $tmpdir
 # install vim plugins
 vim +PluginInstall +qall
 
-printf "${GREEN}Installing docker${NC}"
+printf "${GREEN}Installing docker${NC}\n"
 sudo apt-get install \
     ca-certificates \
     curl \
@@ -49,7 +49,7 @@ echo \
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
-printf "${GREEN}Installing docker-compose${NC}"
+printf "${GREEN}Installing docker-compose${NC}\n"
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 sudo chmod +x /usr/local/bin/docker-compose
