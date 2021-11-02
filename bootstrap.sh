@@ -21,13 +21,16 @@ read
 
 # Checkout bootstrap repo in a temp folder
 tmpdir=$(mktemp -d)
-pushd $tmpdir
-git clone git@github.com:smanilov/bootstrap.git
-popd
+git clone git@github.com:smanilov/bootstrap.git $tmpdir/bootstrap
 
 # copy config files to home
-cp -R $tmpdir/bootstrap/home/* ~
+cp $tmpdir/bootstrap/home/.vimrc ~
+cp $tmpdir/bootstrap/home/.tmux.conf ~
+
 rm -rf $tmpdir
+
+# install Vundle
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # install vim plugins
 vim +PluginInstall +qall
