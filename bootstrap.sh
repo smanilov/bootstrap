@@ -26,7 +26,7 @@ git clone git@github.com:smanilov/bootstrap.git
 popd
 
 # copy config files to home
-cp -R $tmpdir/home/* ~
+cp -R $tmpdir/bootstrap/home/* ~
 rm -rf $tmpdir
 
 # install vim plugins
