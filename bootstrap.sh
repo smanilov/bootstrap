@@ -23,6 +23,9 @@ read
 tmpdir=$(mktemp -d)
 git clone git@github.com:smanilov/bootstrap.git $tmpdir/bootstrap
 
+# make directory for vim undo files
+mkdir -p ~/.vim/undofiles
+
 # copy config files to home
 cp $tmpdir/bootstrap/home/.vimrc ~
 cp $tmpdir/bootstrap/home/.tmux.conf ~
